@@ -1,8 +1,8 @@
 require_relative 'random_service'
 
 class Consumer
-  def initialize
-    @service = RandomService.build
+  def initialize(client: ThirdPartyLib.new)
+    @service = RandomService.build(client: client)
   end
 
   def print

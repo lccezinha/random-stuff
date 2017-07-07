@@ -10,4 +10,10 @@ class ConsumerTest < Minitest::Test
 
     assert_equal @consumer.print, "ThirdPartyLib Execute..."
   end
+
+  def test_with_another_lib
+    @consumer = Consumer.new(client: ::AnotherLib.new)
+
+    assert_equal @consumer.print, "AnotherLib Execute..."
+  end
 end
