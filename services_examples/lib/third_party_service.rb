@@ -1,11 +1,11 @@
 require_relative 'third_party_lib'
 
-class RandomService
-  def self.build(client: ::ThirdPartyLib.new)
-    new(client: client)
+class ThirdPartyService
+  def self.build
+    new(client: ::ThirdPartyLib.new)
   end
 
-  def initialize(client: ::ThirdPartyLib.new)
+  def initialize(client:)
     @client = client
   end
 
