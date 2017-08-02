@@ -51,6 +51,8 @@ development:
   #   log, notice, warning, error, fatal, and panic
   # Defaults to warning.
   #min_messages: notice
+  host: db
+  user: postgres
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -58,6 +60,8 @@ development:
 test:
   <<: *default
   database: app_rails_pgsql_test
+  host: db
+  user: postgres
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
