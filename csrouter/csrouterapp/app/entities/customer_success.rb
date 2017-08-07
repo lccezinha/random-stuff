@@ -6,5 +6,9 @@ module Entities
       @name = name
       @level = level
     end
+
+    def to_s
+      "#{name} - #{level}"
+    end
   end
 end

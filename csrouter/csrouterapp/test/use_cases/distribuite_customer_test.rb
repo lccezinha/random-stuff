@@ -1,15 +1,12 @@
-require 'minitest/autorun'
-require_relative '../../lib/entities/customer'
-require_relative '../../lib/entities/customer_success'
-require_relative '../../lib/use_cases/distribute_customer'
+require 'test_helper'
 
 module UseCases
-  class DistributeCustomerTest < Minitest::Test
+  class DistributeCustomerTest < ActiveSupport::TestCase
     def setup
       @customer = Entities::Customer.new('Name', 20)
       @customer_success = Entities::CustomerSuccess.new('T Lu Silva', 40)
-      @customer_repository = FakeCustomerRepository.new([@customer])
-      @customer_success_repository = FakeCustomerSuccessRepository.new([@customer_success])
+      @customer_repository = Repositories::Customer::Memory.new([@customer])
+      @customer_success_repository = Repositories::CustomerSuccess::Memory.new([@customer_success])
       @use_case = UseCases::DistributeCustomer.new(@customer_repository, @customer_success_repository)
     end
 
@@ -101,30 +98,6 @@ module UseCases
       }
 
       assert_equal expected, @use_case.run
-    end
-  end
-
-  class FakeCustomerRepository
-    attr_accessor :customers
-
-    def initialize(customers)
-      @customers = customers
-    end
-
-    def all
-      @customers
-    end
-  end
-
-  class FakeCustomerSuccessRepository
-    attr_accessor :customer_successess
-
-    def initialize(customer_successess)
-      @customer_successess = customer_successess
-    end
-
-    def all
-      @customer_successess
     end
   end
 end

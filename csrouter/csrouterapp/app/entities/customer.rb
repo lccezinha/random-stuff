@@ -6,5 +6,9 @@ module Entities
       @name = name
       @size = size
     end
+
+    def to_s
+      "#{name} - #{size}"
+    end
   end
 end
