@@ -9,6 +9,12 @@ RSpec.describe CustomFlatten do
       end
     end
 
+    context 'when receive an empty array' do
+      it 'must flatten []' do
+        expect(described_class.new([]).flatten).to eq([])
+      end
+    end
+
     context 'when receive a non nested array as argument' do
       it 'must flatten [1, 2, 3]' do
         expect(described_class.new([1, 2, 3]).flatten).to eq([1, 2, 3])
